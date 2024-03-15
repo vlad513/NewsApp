@@ -7,10 +7,13 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.os.bundleOf
 import androidx.core.widget.addTextChangedListener
 import androidx.fragment.app.viewModels
+import androidx.navigation.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.room.util.query
+import com.example.newsapp.R
 import com.example.newsapp.databinding.FragmentSearchBinding
 import com.example.newsapp.ui.adapters.NewsAdapter
 import com.example.newsapp.utils.Resource
@@ -53,7 +56,10 @@ class SearchFragment : Fragment() {
             }
         }
 
-
+        newsAdapter.setOnItemClickListener {
+            val bundle = bundleOf("article" to it)
+            view.findNavController().navigate(R.id.action_searchFragment_to_detailsFragment,bundle)
+        }
 
         viewModel.searchLiveData.observe(viewLifecycleOwner) { response ->
             when (response) {

@@ -12,13 +12,6 @@ import javax.inject.Inject
 @HiltViewModel
 class DetailsViewModel @Inject constructor(private val repository: NewsRepository):ViewModel(){
 
-    init {
-        getSavedArticles()
-    }
-
-    fun getSavedArticles() = viewModelScope.launch(Dispatchers.IO) {
-        repository.getFavoriteArticles()
-    }
 
     fun saveFavoriteArticles(article: Article) = viewModelScope.launch(Dispatchers.IO) {
         repository.addToFavorite(article = article)
