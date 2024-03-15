@@ -12,6 +12,7 @@
         android:layout_width="88dp"
         android:layout_height="84dp"
         android:scaleType="centerCrop"
+        android:background="@drawable/bg_image_10"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
