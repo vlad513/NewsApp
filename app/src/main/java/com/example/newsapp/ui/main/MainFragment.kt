@@ -36,14 +36,14 @@ class MainFragment : Fragment() {
                     progress_bar.visibility = View.INVISIBLE
                     response.data?.let { newsAdapter.differ.submitList(it.articles) }
                 }
-                is Resource.Loading -> {
-                    progress_bar.visibility = View.VISIBLE
+                is Resource.Error -> {
+                    progress_bar.visibility = View.INVISIBLE
                     response.data?.let {
                         Log.e("checkData","mainFragment: error: ${it}")
                     }
                 }
-                is Resource.Error -> {
-                    progress_bar.visibility = View.INVISIBLE
+                is Resource.Loading -> {
+                    progress_bar.visibility = View.VISIBLE
                 }
             }
 
