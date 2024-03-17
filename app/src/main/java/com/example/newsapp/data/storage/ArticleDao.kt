@@ -10,9 +10,8 @@ import com.example.newsapp.data.models.Article
 
 @Dao
 interface ArticleDao {
-
     @Query("SELECT * FROM articles")
-    fun getAllArticles():List<Article>
+    fun getAllArticles():LiveData<List<Article>>
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insert(article: Article)
